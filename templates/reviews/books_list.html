@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+        <ul>
+          {% for item in book_list %}
+            <div class="ui column grid">
+              <div class="column">
+                <div class="ui raised segment">
+                  <a class="ui red ribbon label">Overview</a>
+                  <span>Book Details</span>
+                    <br>
+                    <span>Title: </span> <span>{{ item.book.title }}</span>
+                  <br>
+                  <span>Publisher: </span><span>{{ item.book.publisher }}</span>
+                  <br>
+                  <span>Publication Date: </span><span>{{ item.book.publication_date }}</span>
+                  <br>
+                  <p></p>
+                  <a class="ui blue ribbon label">Community</a> User Reviews
+                  <br>
+                    <span>Rating: </span><span>{{ item.book_rating }}</span>
+                    <br>
+                    <span>Number of reviews: </span><span>{{ item.number_of_reviews }}</span>
+                    <br>
+                    {% if item.book_rating is null %}
+                    <span>Provide a rating and write the first review for this book.</span>
+                    <br>
+                    {% endif %}
+                    <a href="{{ item.book.get_absolute_url }}">Details</a>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </ul>
+{% endblock content %}
