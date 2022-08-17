@@ -26,6 +26,12 @@ class Book(models.Model):
                                   on_delete=models.CASCADE)
     contributors = models.ManyToManyField('Contributor',
                                           through="BookContributor")
+    cover = models.ImageField(null=True,
+                              blank=True,
+                              upload_to="book_covers/")
+    sample = models.FileField(null=True,
+                              blank=True,
+                              upload_to="book_samples/")
 
     def isbn13(self):
         return f"{self.isbn[0:3]}-{self.isbn[3:5]}-{self.isbn[6:7]}-{self.isbn[0:3]}-{self.isbn[0:3]}"
@@ -70,3 +76,6 @@ class Review(models.Model):
     creator = models.ForeignKey(auth.get_user_model(), on_delete=models.CASCADE)
     book = models.ForeignKey(Book, on_delete=models.CASCADE,
                              help_text="The Book that this review is for.")
+
+    def __str__(self):
+        return f'{self.creator.username} - {self.book.title}'
