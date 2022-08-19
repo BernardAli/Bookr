@@ -5,8 +5,14 @@
     <h3>Book Details</h3>
     {% if book.cover %}
         <img src="{{ book.cover.url }}" alt="">
+        <br>
     {% else %}
         <p>No Image Added yet</p>
+    {% endif %}
+    {% if book.sample %}
+        <a href="{{ book.sample.url }}">Download Sample</a>
+    {% else %}
+        <p>No Sample Added yet</p>
     {% endif %}
     <hr>
     <span>Title: </span> <span>{{ book.title }}</span>
