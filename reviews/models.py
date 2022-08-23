@@ -35,6 +35,7 @@ class Book(models.Model):
 
     def isbn13(self):
         return f"{self.isbn[0:3]}-{self.isbn[3:5]}-{self.isbn[6:7]}-{self.isbn[0:3]}-{self.isbn[0:3]}"
+
     def __str__(self):
         return f"{self.title} ({self.isbn})"
 

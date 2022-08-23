@@ -18,12 +18,14 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
-from .views import profile
+from .views import profile, reading_history
+import reviews.views
 
 urlpatterns = [
     path("accounts/", include("django.contrib.auth.urls")),
     path('admin/', admin.site.urls),
     path('accounts/profile/', profile, name='profile'),
+    path('accounts/profile/reading_history', reading_history, name='reading_history'),
     path('', include('reviews.urls')),
     path('filter/', include('filter_demo.urls'))
 ]
