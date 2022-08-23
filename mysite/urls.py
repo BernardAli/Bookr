@@ -20,11 +20,13 @@ from django.urls import path, include
 
 from .views import profile, reading_history
 import reviews.views
+from authy import views as authy_views
 
 urlpatterns = [
+    path('register/', authy_views.register, name='register'),
     path("accounts/", include("django.contrib.auth.urls")),
     path('admin/', admin.site.urls),
-    path('accounts/profile/', profile, name='profile'),
+    path('accounts/profile/<username>/', profile, name='profile'),
     path('accounts/profile/reading_history', reading_history, name='reading_history'),
     path('', include('reviews.urls')),
     path('filter/', include('filter_demo.urls'))

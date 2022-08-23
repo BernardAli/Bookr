@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from plotly.offline import plot
 import plotly.graph_objects as graphs
@@ -12,8 +13,8 @@ from .utils import get_books_read, get_books_read_by_month
 
 
 @login_required
-def profile(request):
-    user = request.user
+def profile(request, username):
+    user = get_object_or_404(User, username=username)
     permissions = user.get_all_permissions()
     # Get the books read in different months this year
     books_read_by_month = get_books_read_by_month(user.username)
