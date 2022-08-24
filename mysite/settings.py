@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     'reviews',
     'authy',
+    'bookr_test',
 
     # 3rd Party
     'rest_framework',

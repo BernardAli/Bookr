@@ -27,9 +27,10 @@ urlpatterns = [
     path("accounts/", include("django.contrib.auth.urls")),
     path('admin/', admin.site.urls),
     path('accounts/profile/<username>/', profile, name='profile'),
-    path('accounts/profile/reading_history', reading_history, name='reading_history'),
+    path('accounts/profile/reading_history/', reading_history, name='reading_history'),
     path('', include('reviews.urls')),
-    path('filter/', include('filter_demo.urls'))
+    path('filter/', include('filter_demo.urls')),
+    path('test/', include('bookr_test.urls'))
 ]
 
 if settings.DEBUG:
